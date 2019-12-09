@@ -3,8 +3,11 @@
  * for reinformcement learning.
  */
 
+#include <boost/algorithm/string.hpp>
 #include <fstream>
 #include <iostream>
+
+#include "utils.hpp"
 
 using namespace std;
 
@@ -53,6 +56,10 @@ struct State {
   int getAt(int row, int col) { return this->data[row * COLS + col]; }
 };
 
+struct Agent {
+  State move(MoveDirection moveDirection, ActionType actionType);
+};
+
 struct Action {
   ActionType type;
   MoveDirection direction;
@@ -80,5 +87,9 @@ void test() {
 
 int main() {
   test();
+  // ifstream mazeFile;
+  // mazeFile.open("maze.txt");
+  // string s = getLastLine(mazeFile);
+  // cout << s << endl;
   return 0;
 }
