@@ -8,8 +8,6 @@
 
 using namespace std;
 
-#define DEBUG
-
 #define ROWS 8
 #define COLS 8
 
@@ -20,26 +18,15 @@ struct State {
   int* data;
   State() {
     this->data = new int[ROWS * COLS];
-#ifdef DEBUG
-    cout << "Data created." << endl;
-#endif
     memset(this->data, 0, sizeof(this->data[0]) * ROWS * COLS);
   }
 
   State(State& state) {
     this->data = new int[ROWS * COLS];
-#ifdef DEBUG
-    cout << "Data created." << endl;
-#endif
     memcpy(this->data, state.data, sizeof(this->data[0]) * ROWS * COLS);
   }
 
-  ~State() {
-    delete[] this->data;
-#ifdef DEBUG
-    cout << "Data cleaned up." << endl;
-#endif
-  }
+  ~State() { delete[] this->data; }
 
   void print(ostream& out, bool readable = false) {
     for (int i = 0; i < ROWS; ++i) {
@@ -52,6 +39,8 @@ struct State {
     }
     (out ? out : cout) << endl;
   }
+
+  // void load(istream& in) { in.re }
 
   void setToAt(int value, int row, int col) {
     this->data[row * COLS + col] = value;

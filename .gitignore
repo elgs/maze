@@ -1,1 +1,4 @@
+*.gch
 a.out
+maze
+maze.txt

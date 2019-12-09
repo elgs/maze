@@ -4,7 +4,7 @@ INSTALLDIR=~/bin
 .PHONY: all
 all: $(OUTPUTFILE)
 
-$(OUTPUTFILE): *.cpp
+$(OUTPUTFILE): *.cpp *.hpp
 	g++ -O3 -o ${OUTPUTFILE} *.cpp
 
 .PHONY: install
@@ -14,4 +14,5 @@ install:
 
 .PHONY: clean 
 clean:
-	rm -Rf $(OUTPUTFILE) ${INSTALLDIR}/$(OUTPUTFILE)
+	rm -Rf $(OUTPUTFILE) ${INSTALLDIR}/$(OUTPUTFILE) *.gch
+	
